@@ -15,14 +15,11 @@ allData2$seqid2=gsub("chr", "", allData2$seqname)
 allData2$seqid2=gsub("_random", "", allData2$seqid2)
 
 allData2$seqDiff=(allData2$seqid != allData2$seqid2 | (is.na(allData2$seqid) & !is.na(allData2$seqid2)) | (is.na(allData2$seqid2) & !is.na(allData2$seqid))) & !(is.na(allData2$seqid) & is.na(allData2$seqid2))
-# View(allData2[allData2$seqDiff & !is.na(allData2$seqid),])
-
 
 table(allData2$seqid,useNA = "ifany")
 table(allData2$seqid2,useNA = "ifany")
 dat=allData2
 chrName="12"
-# dat=allData2[which(allData2$seqid==chrName),]
 dat=allData2[which(allData2$seqid2==chrName),]
 
 alpha=0.05
@@ -33,10 +30,7 @@ abline(h=round(alpha*length(dat$limma.pval.unadjusted)),col=2,lty=2)
 hist(dat$DESeq2.pval.unadjusted)
 abline(h=round(alpha*length(dat$DESeq2.pval.unadjusted)),col=2,lty=2)
 
-# xData=dat$edgeR.pval.unadjusted
-# xData=dat$edgeR.pval.unadjusted[dat$edgeR.pval.unadjusted<1]
-# xData=dat$limma.pval.unadjusted #### Do not use
-xData=dat$DESeq2.pval.unadjusted ### BETTER USE THIS METHOD
+xData=dat$DESeq2.pval.unadjusted 
 
 max(table(xData))
 xData=sort(xData)
@@ -49,9 +43,10 @@ while (sum(duplicated(xData))>0) {
   i=i+1
 }
 
-pdf(file = paste("plots_Chromosome/", chrName, "_2.pdf", sep=""), width = 8, height = 6)
+pdf(file = paste("plots_Chromosome/", chrName, ".pdf", sep=""), width = 8, height = 6)
+par(mar=c(5,5,3.5,2))
 h=hist(xData, probability = TRUE, main= paste("Chromosome",chrName, sep=" "), xlab="p-values", 
-       cex.axis=1.5, cex.lab=1.5, cex.main=1.5,col="gray95")
+       cex.axis=1.75, cex.lab=1.75, cex.main=1.75,col="gray95")
 abline(h=1,col="red4",lty=2, lwd=2)
 
 estPrecision=0.0001
@@ -71,7 +66,6 @@ codeMM=MMeqSolutions$termcd
 #####################################################################
 curve(dBetaUniform(x,alphaMM,betaMM,gammaMM), from=0, to=0.99, col="darkblue", lwd=2, add=TRUE)
 #####################################################################
-
 
 alphaT=alphaMM
 betaT=betaMM
@@ -123,21 +117,6 @@ curve(dBetaUniform(x,alphaTmps,betaTmps,gammaTmps), from=0, to=0.99, col="darkgr
 
 legend("topright", legend=c("ML", "MPS", "MM"),
        col=c("red2","darkgreen","darkblue"), lty=c(1,2,1), cex=1.4, lwd=2)
-# library(latex2exp)
-# roundValue=4
-# dValue=round(max(h$density),2)
-# text(0.35,dValue,"a")
-# text(0.5,dValue,"b")
-# text(0.65,dValue,TeX('$\\gamma$'))
-# text(0.35,dValue-dValue/15,as.character(round(alphaT,roundValue)))
-# text(0.5,dValue-dValue/15,as.character(round(betaT,roundValue)))
-# text(0.65,dValue-dValue/15,as.character(round(gammaT,roundValue)))
-# text(0.35,dValue-2*dValue/15,as.character(round(alphaTmps,roundValue)))
-# text(0.5,dValue-2*dValue/15,as.character(round(betaTmps,roundValue)))
-# text(0.65,dValue-2*dValue/15,as.character(round(gammaTmps,roundValue)))
-# text(0.35,dValue-dValue/5,as.character(round(alphaMM,roundValue)))
-# text(0.5,dValue-dValue/5,as.character(round(betaMM,roundValue)))
-# text(0.65,dValue-dValue/5,as.character(round(gammaMM,roundValue)))
 
 dev.off()
 
@@ -184,8 +163,6 @@ cData$BHclass[1:R]=1
 cData[1:55,2:3]
 
 
-
-
 #############################################################################################################################
 library(nleqslv)
 library(mnorm)
@@ -222,11 +199,7 @@ EMequations<-function(alphaBeta,xData,gammaT,cT){
 updateEstimates<-function(xData,alphaT,betaT,gammaT,equationError,maxEquationIterations){
   cT=(1-gammaT)*(xData^(alphaT-1))*((1-xData)^(betaT-1))/beta(alphaT,betaT)
   gammaT1=mean(gammaT/( gammaT + (1-gammaT)*(xData^(alphaT-1))*((1-xData)^(betaT-1))/beta(alphaT,betaT)))
-  
-  
-  ################################################################################
-  ############################ ERROR TRY #########################################
-  ################################################################################
+
   EMeqSolutions=try(nleqslv(c(alphaT,betaT), EMequations, xData=xData,gammaT=gammaT,cT=cT,
                             method = "Newton", control=list(allowSingular=TRUE,xtol=equationError,maxit=maxEquationIterations)),silent = T)
   if("try-error" %in% class(EMeqSolutions)){
@@ -236,33 +209,13 @@ updateEstimates<-function(xData,alphaT,betaT,gammaT,equationError,maxEquationIte
     alphaT1=EMeqSolutions$x[1]
     betaT1=EMeqSolutions$x[2]
   }
-  ################################################################################
-  
-  ################################################################################
-  ############################ ERROR #############################################
-  ################################################################################
-  # EMeqSolutions=nleqslv(c(alphaT,betaT), EMequations, xData=xData,gammaT=gammaT,cT=cT,
-  #         method = "Newton", control=list(allowSingular=TRUE,xtol=equationError,maxit=maxEquationIterations))
-  # alphaT1=EMeqSolutions$x[1]
-  # betaT1=EMeqSolutions$x[2]
-  ################################################################################
-  
   return(c(alphaT1,betaT1,gammaT1))
 }
 ############################################################################
 
 ############################ MPS estimation ############################################
 MPSequations<-function(alphaBetaMPS,xData,c1T,c2T,gammaMPS){
-  ############################################################################################################################
-  ##################################### Negative values produced #############################################################
-  ############################################################################################################################
-  # pDer=alphaBetaMPS[1]
-  # qDer=alphaBetaMPS[2]
-  # if(alphaBetaMPS[1]<0){pDer=10^(-6)}
-  # if(alphaBetaMPS[2]<0){qDer=10^(-6)}
-  # betaDer=pbetaDiff(x = xData,  p = pDer, q = qDer)
   betaDer=pbetaDiff(x = xData,  p = alphaBetaMPS[1], q = alphaBetaMPS[2])
-  ############################################################################################################################
   betaDer1A=c(betaDer$dp,0)
   betaDer0A=c(0,betaDer$dp)
   betaDer1B=c(betaDer$dq,0)
@@ -270,22 +223,8 @@ MPSequations<-function(alphaBetaMPS,xData,c1T,c2T,gammaMPS){
   xData1=c(xData,1)
   xData0=c(0,xData)
   betaDiff=pbeta(xData1,alphaBetaMPS[1],alphaBetaMPS[2])-pbeta(xData0,alphaBetaMPS[1],alphaBetaMPS[2])
-  
-  ############################################################################################################################
-  ########################################### DELETE ##################################################################
-  ############################################################################################################################
-  ############################################################################################################################
-  # betaDiff[which(betaDiff==0)]=betaDiff[betaDiff==0]+which(betaDiff==0)*10^(-16)
-  ############################################################################################################################
-  
   eqAlpha=sum(((betaDer1A-betaDer0A)/betaDiff)*c2T/(c1T+c2T))
   eqBeta=sum(((betaDer1B-betaDer0B)/betaDiff)*c2T/(c1T+c2T))
-  # ###########################################################################################################################
-  # ########################################## NaNs produced ##################################################################
-  # ###########################################################################################################################
-  # if(is.nan(eqAlpha)){eqAlpha=sum((betaDer1A-betaDer0A)*(1-gammaMPS)/(c1T+c2T))} #############################################
-  # if(is.nan(eqBeta)){eqBeta=sum((betaDer1B-betaDer0B)*(1-gammaMPS)/(c1T+c2T))} ###############################################
-  # ###########################################################################################################################
   return(c(eqAlpha,eqBeta))
 }
 
@@ -295,11 +234,6 @@ MPSupdateEstimates<-function(xData,alphaTmps,betaTmps,gammaTmps,equationError,ma
   c1T=gammaTmps*(xData1-xData0)
   c2T=(1-gammaTmps)*(pbeta(xData1,alphaTmps,betaTmps)-pbeta(xData0,alphaTmps,betaTmps))
   gammaT1mps=mean(c1T/(c1T+c2T))
-  
-  
-  ################################################################################
-  ############################ ERROR TRY #########################################
-  ################################################################################
   MPSeqSolutions=try(nleqslv(c(alphaTmps,betaTmps), MPSequations, xData=xData,c1T=c1T,c2T=c2T,
                              method = "Newton", control=list(allowSingular=TRUE,xtol=equationError,maxit=maxEquationIterations)),silent = T)
   if("try-error" %in% class(MPSeqSolutions)){
@@ -309,20 +243,6 @@ MPSupdateEstimates<-function(xData,alphaTmps,betaTmps,gammaTmps,equationError,ma
     alphaT1mps=MPSeqSolutions$x[1]
     betaT1mps=MPSeqSolutions$x[2]
   }
-  ################################################################################
-  
-  
-  
-  ################################################################################
-  ############################ ERROR #############################################
-  ################################################################################
-  # MPSeqSolutions=nleqslv(c(alphaTmps,betaTmps), MPSequations, xData=xData,c1T=c1T,c2T=c2T,gammaMPS=gammaTmps,
-  #                            method = "Newton", control=list(allowSingular=TRUE,xtol=equationError,maxit=maxEquationIterations))
-  # alphaT1mps=MPSeqSolutions$x[1]
-  # betaT1mps=MPSeqSolutions$x[2]
-  ################################################################################
-  
-  
   return(c(alphaT1mps,betaT1mps,gammaT1mps))
 }
 ############################################################################
@@ -367,18 +287,13 @@ bootstrapMLE<-function(alpha,beta,gamma,n,trialsB,estPrecision,maxIterations,equ
       betaT[i]=updatedEst[2]
       gammaT[i]=updatedEst[3]
       j=j+1
-      ######################################################
-      ##################### ERROR TRY ######################
-      ######################################################
       if(updatedEst[1]<0 || updatedEst[2]<0 || updatedEst[3]<0 ){break}
-      ######################################################
     }
     iterations[i]=j
     i=i+1
   }
   return(list("alpha"=alphaT,"beta"=betaT,"gamma"=gammaT,"iterations"=iterations))
 }
-
 
 ############################ MPS ############################################
 bootstrapMPS<-function(alpha,beta,gamma,n,trialsB,estPrecision,maxIterations,equationError,maxEquationIterations){
@@ -402,11 +317,7 @@ bootstrapMPS<-function(alpha,beta,gamma,n,trialsB,estPrecision,maxIterations,equ
       betaTmps[i]=updatedEst[2]
       gammaTmps[i]=updatedEst[3]
       j=j+1
-      ######################################################
-      ##################### ERROR TRY ######################
-      ######################################################
       if(updatedEst[1]<0 || updatedEst[2]<0 || updatedEst[3]<0 ){break}
-      ######################################################
     }
     iterationsMPS[i]=j
     i=i+1
@@ -424,16 +335,6 @@ bootstrapMM<-function(alpha,beta,gamma,n,trialsB,estPrecision,maxIterations,equa
   while (i<=trialsB) {
     simBU=rBetaUniform(n,alpha,beta,gamma)
     xData=sort(simBU[1:n])
-    # MMeqSolutions=nleqslv(c(alpha,beta,gamma), MMequations, xData=xData,
-    #                       method = "Newton", control=list(allowSingular=TRUE,xtol=equationError,maxit=maxEquationIterations))
-    # alphaMM[i]=MMeqSolutions$x[1]
-    # betaMM[i]=MMeqSolutions$x[2]
-    # gammaMM[i]=MMeqSolutions$x[3]
-    # codeMM[i]=MMeqSolutions$termcd
-    
-    ################################################################################
-    ############################ ERROR TRY #########################################
-    ################################################################################
     MMeqSolutions=try(nleqslv(c(alpha,beta,gamma), MMequations, xData=xData,
                               method = "Newton", control=list(allowSingular=TRUE,xtol=equationError,maxit=maxEquationIterations)),silent = T)
     if("try-error" %in% class(MMeqSolutions)){break
@@ -443,8 +344,6 @@ bootstrapMM<-function(alpha,beta,gamma,n,trialsB,estPrecision,maxIterations,equa
       gammaMM[i]=MMeqSolutions$x[3]
       codeMM[i]=MMeqSolutions$termcd
     }
-    ################################################################################
-    
     i=i+1
   }
   return(list("alpha"=alphaMM,"beta"=betaMM,"gamma"=gammaMM,"code"=codeMM))
@@ -496,11 +395,7 @@ for (k in 1:n) {
     alphaTjk[k]=updatedEst[1]
     betaTjk[k]=updatedEst[2]
     gammaTjk[k]=updatedEst[3]
-    ######################################################
-    ##################### ERROR TRY ######################
-    ######################################################
     if(updatedEst[1]<0 || updatedEst[2]<0 || updatedEst[3]<0 ){break}
-    ######################################################
     j=j+1
   }
 }
@@ -566,11 +461,7 @@ for (k in 1:n) {
     betaTmpsjk[k]=updatedEst[2]
     gammaTmpsjk[k]=updatedEst[3]
     j=j+1
-    ######################################################
-    ##################### ERROR TRY ######################
-    ######################################################
     if(updatedEst[1]<0 || updatedEst[2]<0 || updatedEst[3]<0 ){break}
-    ######################################################
   }
 }
 aiMPS=rep(0,3)
@@ -621,20 +512,6 @@ alphaMMjk=rep(0,n)
 betaMMjk=rep(0,n)
 gammaMMjk=rep(0,n)
 for (k in 1:n) {
-  # MMeqSolutions=nleqslv(c(alphaMM[i],betaMM[i],gammaMM[i]), MMequations, xData=xData[-k],
-  #                       method = "Newton", control=list(allowSingular=TRUE,xtol=equationError,maxit=maxEquationIterations))
-  # ######################################################
-  # ################## WRONG VALUES ######################
-  # ######################################################
-  # if(MMeqSolutions$x[1]<0 || MMeqSolutions$x[2]<0 || MMeqSolutions$x[3]<0 ){next}
-  # ######################################################
-  # alphaMMjk[k]=MMeqSolutions$x[1]
-  # betaMMjk[k]=MMeqSolutions$x[2]
-  # gammaMMjk[k]=MMeqSolutions$x[3]
-  
-  ################################################################################
-  ############################ ERROR TRY #########################################
-  ################################################################################
   MMeqSolutions=try(nleqslv(c(alphaMM[i],betaMM[i],gammaMM[i]), MMequations, xData=xData[-k],
                             method = "Newton", control=list(allowSingular=TRUE,xtol=equationError,maxit=maxEquationIterations)),silent = T)
   if("try-error" %in% class(MMeqSolutions)){next
@@ -643,11 +520,7 @@ for (k in 1:n) {
     betaMMjk[k]=MMeqSolutions$x[2]
     gammaMMjk[k]=MMeqSolutions$x[3]
   }
-  ######################################################
-  ################## WRONG VALUES ######################
-  ######################################################
   if(MMeqSolutions$x[1]<0 || MMeqSolutions$x[2]<0 || MMeqSolutions$x[3]<0 ){next}
-  ######################################################
 }
 aiMM=rep(0,3)
 aiMM[1]=((sum((mean(alphaMMjk)-alphaMMjk)^2))^(-3/2))*sum((mean(alphaMMjk)-alphaMMjk)^3)/6
