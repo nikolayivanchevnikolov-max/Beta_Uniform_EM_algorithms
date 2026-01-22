@@ -86,7 +86,7 @@ msePlotMLE <- ggplot(plotData, aes(x,y1)) +
   # scale_y_continuous(limits=c(-8.85,0.75), breaks = seq(0, -7.5, by = -2.5))+
   #ggtitle(TeX(paste("Parameters: $a=",alpha, "$, $b=", beta, "$",sep="")))
 msePlotMLE
-ggsave(msePlotMLE,filename=paste("plots_All\\JAS\\log_alphaMsePlot_All_n_100_seed_",seedNum,"_a_",alpha,"_b_",beta,"_trials_",trialsAll[1],"_trialsB_",trialsB,".pdf",sep=""), 
+ggsave(msePlotMLE,filename=paste("plots_All\\log_alphaMsePlot_All_n_100_seed_",seedNum,"_a_",alpha,"_b_",beta,"_trials_",trialsAll[1],"_trialsB_",trialsB,".pdf",sep=""), 
        width = 12, height = 9)
 
 msePlotMPS<- ggplot(plotData, aes(x,y1_500)) +
@@ -118,7 +118,7 @@ msePlotMPS<- ggplot(plotData, aes(x,y1_500)) +
   # scale_y_continuous(limits=c(-8.85,0.75), breaks = seq(0, -7.5, by = -2.5))+
   #ggtitle(TeX(paste("Parameters: $a=",alpha, "$, $b=", beta, "$",sep="")))
 msePlotMPS
-ggsave(msePlotMPS,filename=paste("plots_All\\JAS\\log_alphaMsePlot_All_n_500_seed_",seedNum,"_a_",alpha,"_b_",beta,"_trials_",trialsAll[1],"_trialsB_",trialsB,".pdf",sep=""), 
+ggsave(msePlotMPS,filename=paste("plots_All\\log_alphaMsePlot_All_n_500_seed_",seedNum,"_a_",alpha,"_b_",beta,"_trials_",trialsAll[1],"_trialsB_",trialsB,".pdf",sep=""), 
        width = 12, height = 9)
 
 msePlotMM<- ggplot(plotData, aes(x,y1_1000)) +
@@ -150,7 +150,7 @@ msePlotMM<- ggplot(plotData, aes(x,y1_1000)) +
   # scale_y_continuous(limits=c(-8.85,0.75), breaks = seq(0, -7.5, by = -2.5))+
   #ggtitle(TeX(paste("Parameters: $a=",alpha, "$, $b=", beta, "$",sep="")))
 msePlotMM
-ggsave(msePlotMM,filename=paste("plots_All\\JAS\\log_alphaMsePlot_All_n_1000_seed_",seedNum,"_a_",alpha,"_b_",beta,"_trials_",trialsAll[1],"_trialsB_",trialsB,".pdf",sep=""), 
+ggsave(msePlotMM,filename=paste("plots_All\\log_alphaMsePlot_All_n_1000_seed_",seedNum,"_a_",alpha,"_b_",beta,"_trials_",trialsAll[1],"_trialsB_",trialsB,".pdf",sep=""), 
        width = 12, height = 9)
 
 msePlotMPS<- ggplot(plotData, aes(x,y1_5000)) +
@@ -182,7 +182,7 @@ msePlotMPS<- ggplot(plotData, aes(x,y1_5000)) +
 # scale_y_continuous(limits=c(-8.85,0.75), breaks = seq(0, -7.5, by = -2.5))+
 #ggtitle(TeX(paste("Parameters: $a=",alpha, "$, $b=", beta, "$",sep="")))
 msePlotMPS
-ggsave(msePlotMPS,filename=paste("plots_All\\JAS\\log_alphaMsePlot_All_n_5000_seed_",seedNum,"_a_",alpha,"_b_",beta,"_trials_",trialsAll[1],"_trialsB_",trialsB,".pdf",sep=""), 
+ggsave(msePlotMPS,filename=paste("plots_All\\log_alphaMsePlot_All_n_5000_seed_",seedNum,"_a_",alpha,"_b_",beta,"_trials_",trialsAll[1],"_trialsB_",trialsB,".pdf",sep=""), 
        width = 12, height = 9)
 
 
@@ -220,7 +220,7 @@ msePlotMLE <- ggplot(plotData, aes(x,y1)) +
   # scale_y_continuous(limits=c(-3.5,4.25), breaks = seq(-3, 4, by = 1))+
   #ggtitle(TeX(paste("Parameters: $a=",alpha, "$, $b=", beta, "$",sep="")))
 msePlotMLE
-ggsave(msePlotMLE,filename=paste("plots_All\\JAS\\log_betaMsePlot_All_n_100_seed_",seedNum,"_a_",alpha,"_b_",beta,"_trials_",trialsAll[1],"_trialsB_",trialsB,".pdf",sep=""), 
+ggsave(msePlotMLE,filename=paste("plots_All\\log_betaMsePlot_All_n_100_seed_",seedNum,"_a_",alpha,"_b_",beta,"_trials_",trialsAll[1],"_trialsB_",trialsB,".pdf",sep=""), 
        width = 12, height = 9)
 
 msePlotMPS<- ggplot(plotData, aes(x,y1_500)) +
@@ -252,7 +252,7 @@ msePlotMPS<- ggplot(plotData, aes(x,y1_500)) +
   # scale_y_continuous(limits=c(-3.5,4.25), breaks = seq(-3, 4, by = 1))+
   #ggtitle(TeX(paste("Parameters: $a=",alpha, "$, $b=", beta, "$",sep="")))
 msePlotMPS
-ggsave(msePlotMPS,filename=paste("plots_All\\JAS\\log_betaMsePlot_All_n_500_seed_",seedNum,"_a_",alpha,"_b_",beta,"_trials_",trialsAll[1],"_trialsB_",trialsB,".pdf",sep=""), 
+ggsave(msePlotMPS,filename=paste("plots_All\\log_betaMsePlot_All_n_500_seed_",seedNum,"_a_",alpha,"_b_",beta,"_trials_",trialsAll[1],"_trialsB_",trialsB,".pdf",sep=""), 
        width = 12, height = 9)
 
 msePlotMM<- ggplot(plotData, aes(x,y1_1000)) +
@@ -284,7 +284,7 @@ msePlotMM<- ggplot(plotData, aes(x,y1_1000)) +
   # scale_y_continuous(limits=c(-3.5,4.25), breaks = seq(-3, 4, by = 1))+
   #ggtitle(TeX(paste("Parameters: $a=",alpha, "$, $b=", beta, "$",sep="")))
 msePlotMM
-ggsave(msePlotMM,filename=paste("plots_All\\JAS\\log_betaMsePlot_All_n_1000_seed_",seedNum,"_a_",alpha,"_b_",beta,"_trials_",trialsAll[1],"_trialsB_",trialsB,".pdf",sep=""), 
+ggsave(msePlotMM,filename=paste("plots_All\\log_betaMsePlot_All_n_1000_seed_",seedNum,"_a_",alpha,"_b_",beta,"_trials_",trialsAll[1],"_trialsB_",trialsB,".pdf",sep=""), 
        width = 12, height = 9)
 
 msePlotMPS<- ggplot(plotData, aes(x,y1_5000)) +
@@ -316,7 +316,7 @@ msePlotMPS<- ggplot(plotData, aes(x,y1_5000)) +
 # scale_y_continuous(limits=c(-3.5,4.25), breaks = seq(-3, 4, by = 1))+
 #ggtitle(TeX(paste("Parameters: $a=",alpha, "$, $b=", beta, "$",sep="")))
 msePlotMPS
-ggsave(msePlotMPS,filename=paste("plots_All\\JAS\\log_betaMsePlot_All_n_5000_seed_",seedNum,"_a_",alpha,"_b_",beta,"_trials_",trialsAll[1],"_trialsB_",trialsB,".pdf",sep=""), 
+ggsave(msePlotMPS,filename=paste("plots_All\\log_betaMsePlot_All_n_5000_seed_",seedNum,"_a_",alpha,"_b_",beta,"_trials_",trialsAll[1],"_trialsB_",trialsB,".pdf",sep=""), 
        width = 12, height = 9)
 
 ######################################## Parameter gamma ####################################### 
@@ -353,7 +353,7 @@ msePlotMLE <- ggplot(plotData, aes(x,y1)) +
   # scale_y_continuous(limits=c(-8.85,0), breaks = seq(0, -7.5, by = -2.5))+
   #ggtitle(TeX(paste("Parameters: $a=",alpha, "$, $b=", beta, "$",sep="")))
 msePlotMLE
-ggsave(msePlotMLE,filename=paste("plots_All\\JAS\\log_gammaMsePlot_All_n_100_seed_",seedNum,"_a_",alpha,"_b_",beta,"_trials_",trialsAll[1],"_trialsB_",trialsB,".pdf",sep=""), 
+ggsave(msePlotMLE,filename=paste("plots_All\\log_gammaMsePlot_All_n_100_seed_",seedNum,"_a_",alpha,"_b_",beta,"_trials_",trialsAll[1],"_trialsB_",trialsB,".pdf",sep=""), 
        width = 12, height = 9)
 
 msePlotMPS<- ggplot(plotData, aes(x,y1_500)) +
@@ -385,7 +385,7 @@ msePlotMPS<- ggplot(plotData, aes(x,y1_500)) +
   # scale_y_continuous(limits=c(-8.85,0), breaks = seq(0, -7.5, by = -2.5))+
   #ggtitle(TeX(paste("Parameters: $a=",alpha, "$, $b=", beta, "$",sep="")))
 msePlotMPS
-ggsave(msePlotMPS,filename=paste("plots_All\\JAS\\log_gammaMsePlot_All_n_500_seed_",seedNum,"_a_",alpha,"_b_",beta,"_trials_",trialsAll[1],"_trialsB_",trialsB,".pdf",sep=""), 
+ggsave(msePlotMPS,filename=paste("plots_All\\log_gammaMsePlot_All_n_500_seed_",seedNum,"_a_",alpha,"_b_",beta,"_trials_",trialsAll[1],"_trialsB_",trialsB,".pdf",sep=""), 
        width = 12, height = 9)
 
 msePlotMM<- ggplot(plotData, aes(x,y1_1000)) +
@@ -417,7 +417,7 @@ msePlotMM<- ggplot(plotData, aes(x,y1_1000)) +
   # scale_y_continuous(limits=c(-8.85,0), breaks = seq(0, -7.5, by = -2.5))+
   #ggtitle(TeX(paste("Parameters: $a=",alpha, "$, $b=", beta, "$",sep="")))
 msePlotMM
-ggsave(msePlotMM,filename=paste("plots_All\\JAS\\log_gammaMsePlot_All_n_1000_seed_",seedNum,"_a_",alpha,"_b_",beta,"_trials_",trialsAll[1],"_trialsB_",trialsB,".pdf",sep=""), 
+ggsave(msePlotMM,filename=paste("plots_All\\log_gammaMsePlot_All_n_1000_seed_",seedNum,"_a_",alpha,"_b_",beta,"_trials_",trialsAll[1],"_trialsB_",trialsB,".pdf",sep=""), 
        width = 12, height = 9)
 
 msePlotMPS<- ggplot(plotData, aes(x,y1_5000)) +
@@ -449,7 +449,7 @@ msePlotMPS<- ggplot(plotData, aes(x,y1_5000)) +
 # scale_y_continuous(limits=c(-8.85,0), breaks = seq(0, -7.5, by = -2.5))+
 #ggtitle(TeX(paste("Parameters: $a=",alpha, "$, $b=", beta, "$",sep="")))
 msePlotMPS
-ggsave(msePlotMPS,filename=paste("plots_All\\JAS\\log_gammaMsePlot_All_n_5000_seed_",seedNum,"_a_",alpha,"_b_",beta,"_trials_",trialsAll[1],"_trialsB_",trialsB,".pdf",sep=""), 
+ggsave(msePlotMPS,filename=paste("plots_All\\log_gammaMsePlot_All_n_5000_seed_",seedNum,"_a_",alpha,"_b_",beta,"_trials_",trialsAll[1],"_trialsB_",trialsB,".pdf",sep=""), 
        width = 12, height = 9)
 ###############################################################################################
 
@@ -491,7 +491,7 @@ biasPlot <- ggplot(plotData, aes(x,y1)) +
   # scale_y_continuous(limits=c(-8.85,0.75), breaks = seq(0, -7.5, by = -2.5))+
   #ggtitle(TeX(paste("Parameters: $a=",alpha, "$, $b=", beta, "$",sep="")))
 biasPlot
-ggsave(biasPlot,filename=paste("plots_All\\JAS\\alphaBiasPlot_All_n_100_seed_",seedNum,"_a_",alpha,"_b_",beta,"_trials_",trialsAll[1],"_trialsB_",trialsB,".pdf",sep=""), 
+ggsave(biasPlot,filename=paste("plots_All\\alphaBiasPlot_All_n_100_seed_",seedNum,"_a_",alpha,"_b_",beta,"_trials_",trialsAll[1],"_trialsB_",trialsB,".pdf",sep=""), 
        width = 12, height = 9)
 
 biasPlot<- ggplot(plotData, aes(x,y1_500)) +
@@ -523,7 +523,7 @@ biasPlot<- ggplot(plotData, aes(x,y1_500)) +
   # scale_y_continuous(limits=c(-8.85,0.75), breaks = seq(0, -7.5, by = -2.5))+
   #ggtitle(TeX(paste("Parameters: $a=",alpha, "$, $b=", beta, "$",sep="")))
 biasPlot
-ggsave(biasPlot,filename=paste("plots_All\\JAS\\alphaBiasPlot_All_n_500_seed_",seedNum,"_a_",alpha,"_b_",beta,"_trials_",trialsAll[1],"_trialsB_",trialsB,".pdf",sep=""), 
+ggsave(biasPlot,filename=paste("plots_All\\alphaBiasPlot_All_n_500_seed_",seedNum,"_a_",alpha,"_b_",beta,"_trials_",trialsAll[1],"_trialsB_",trialsB,".pdf",sep=""), 
        width = 12, height = 9)
 
 biasPlot<- ggplot(plotData, aes(x,y1_1000)) +
@@ -555,7 +555,7 @@ biasPlot<- ggplot(plotData, aes(x,y1_1000)) +
   # scale_y_continuous(limits=c(-8.85,0.75), breaks = seq(0, -7.5, by = -2.5))+
   #ggtitle(TeX(paste("Parameters: $a=",alpha, "$, $b=", beta, "$",sep="")))
 biasPlot
-ggsave(biasPlot,filename=paste("plots_All\\JAS\\alphaBiasPlot_All_n_1000_seed_",seedNum,"_a_",alpha,"_b_",beta,"_trials_",trialsAll[1],"_trialsB_",trialsB,".pdf",sep=""), 
+ggsave(biasPlot,filename=paste("plots_All\\alphaBiasPlot_All_n_1000_seed_",seedNum,"_a_",alpha,"_b_",beta,"_trials_",trialsAll[1],"_trialsB_",trialsB,".pdf",sep=""), 
        width = 12, height = 9)
 
 biasPlot<- ggplot(plotData, aes(x,y1_5000)) +
@@ -587,7 +587,7 @@ biasPlot<- ggplot(plotData, aes(x,y1_5000)) +
 # scale_y_continuous(limits=c(-8.85,0.75), breaks = seq(0, -7.5, by = -2.5))+
 #ggtitle(TeX(paste("Parameters: $a=",alpha, "$, $b=", beta, "$",sep="")))
 biasPlot
-ggsave(biasPlot,filename=paste("plots_All\\JAS\\alphaBiasPlot_All_n_5000_seed_",seedNum,"_a_",alpha,"_b_",beta,"_trials_",trialsAll[1],"_trialsB_",trialsB,".pdf",sep=""), 
+ggsave(biasPlot,filename=paste("plots_All\\alphaBiasPlot_All_n_5000_seed_",seedNum,"_a_",alpha,"_b_",beta,"_trials_",trialsAll[1],"_trialsB_",trialsB,".pdf",sep=""), 
        width = 12, height = 9)
 
 ######################################## Parameter b ####################################### 
@@ -624,7 +624,7 @@ biasPlot <- ggplot(plotData, aes(x,y1)) +
   # scale_y_continuous(limits=c(-8.85,0.75), breaks = seq(0, -7.5, by = -2.5))+
   #ggtitle(TeX(paste("Parameters: $a=",alpha, "$, $b=", beta, "$",sep="")))
 biasPlot
-ggsave(biasPlot,filename=paste("plots_All\\JAS\\betaBiasPlot_All_n_100_seed_",seedNum,"_a_",alpha,"_b_",beta,"_trials_",trialsAll[1],"_trialsB_",trialsB,".pdf",sep=""), 
+ggsave(biasPlot,filename=paste("plots_All\\betaBiasPlot_All_n_100_seed_",seedNum,"_a_",alpha,"_b_",beta,"_trials_",trialsAll[1],"_trialsB_",trialsB,".pdf",sep=""), 
        width = 12, height = 9)
 
 biasPlot<- ggplot(plotData, aes(x,y1_500)) +
@@ -656,7 +656,7 @@ biasPlot<- ggplot(plotData, aes(x,y1_500)) +
   # scale_y_continuous(limits=c(-8.85,0.75), breaks = seq(0, -7.5, by = -2.5))+
   #ggtitle(TeX(paste("Parameters: $a=",alpha, "$, $b=", beta, "$",sep="")))
 biasPlot
-ggsave(biasPlot,filename=paste("plots_All\\JAS\\betaBiasPlot_All_n_500_seed_",seedNum,"_a_",alpha,"_b_",beta,"_trials_",trialsAll[1],"_trialsB_",trialsB,".pdf",sep=""), 
+ggsave(biasPlot,filename=paste("plots_All\\betaBiasPlot_All_n_500_seed_",seedNum,"_a_",alpha,"_b_",beta,"_trials_",trialsAll[1],"_trialsB_",trialsB,".pdf",sep=""), 
        width = 12, height = 9)
 
 biasPlot<- ggplot(plotData, aes(x,y1_1000)) +
@@ -688,7 +688,7 @@ biasPlot<- ggplot(plotData, aes(x,y1_1000)) +
   # scale_y_continuous(limits=c(-8.85,0.75), breaks = seq(0, -7.5, by = -2.5))+
   #ggtitle(TeX(paste("Parameters: $a=",alpha, "$, $b=", beta, "$",sep="")))
 biasPlot
-ggsave(biasPlot,filename=paste("plots_All\\JAS\\betaBiasPlot_All_n_1000_seed_",seedNum,"_a_",alpha,"_b_",beta,"_trials_",trialsAll[1],"_trialsB_",trialsB,".pdf",sep=""), 
+ggsave(biasPlot,filename=paste("plots_All\\betaBiasPlot_All_n_1000_seed_",seedNum,"_a_",alpha,"_b_",beta,"_trials_",trialsAll[1],"_trialsB_",trialsB,".pdf",sep=""), 
        width = 12, height = 9)
 
 biasPlot<- ggplot(plotData, aes(x,y1_5000)) +
@@ -720,7 +720,7 @@ biasPlot<- ggplot(plotData, aes(x,y1_5000)) +
 # scale_y_continuous(limits=c(-8.85,0.75), breaks = seq(0, -7.5, by = -2.5))+
 #ggtitle(TeX(paste("Parameters: $a=",alpha, "$, $b=", beta, "$",sep="")))
 biasPlot
-ggsave(biasPlot,filename=paste("plots_All\\JAS\\betaBiasPlot_All_n_5000_seed_",seedNum,"_a_",alpha,"_b_",beta,"_trials_",trialsAll[1],"_trialsB_",trialsB,".pdf",sep=""), 
+ggsave(biasPlot,filename=paste("plots_All\\betaBiasPlot_All_n_5000_seed_",seedNum,"_a_",alpha,"_b_",beta,"_trials_",trialsAll[1],"_trialsB_",trialsB,".pdf",sep=""), 
        width = 12, height = 9)
 
 ######################################## Parameter gamma ####################################### 
@@ -757,7 +757,7 @@ biasPlot <- ggplot(plotData, aes(x,y1)) +
   # scale_y_continuous(limits=c(-8.85,0.75), breaks = seq(0, -7.5, by = -2.5))+
   #ggtitle(TeX(paste("Parameters: $a=",alpha, "$, $b=", beta, "$",sep="")))
 biasPlot
-ggsave(biasPlot,filename=paste("plots_All\\JAS\\gammaBiasPlot_All_n_100_seed_",seedNum,"_a_",alpha,"_b_",beta,"_trials_",trialsAll[1],"_trialsB_",trialsB,".pdf",sep=""), 
+ggsave(biasPlot,filename=paste("plots_All\\gammaBiasPlot_All_n_100_seed_",seedNum,"_a_",alpha,"_b_",beta,"_trials_",trialsAll[1],"_trialsB_",trialsB,".pdf",sep=""), 
        width = 12, height = 9)
 
 biasPlot<- ggplot(plotData, aes(x,y1_500)) +
@@ -789,7 +789,7 @@ biasPlot<- ggplot(plotData, aes(x,y1_500)) +
   # scale_y_continuous(limits=c(-8.85,0.75), breaks = seq(0, -7.5, by = -2.5))+
   #ggtitle(TeX(paste("Parameters: $a=",alpha, "$, $b=", beta, "$",sep="")))
 biasPlot
-ggsave(biasPlot,filename=paste("plots_All\\JAS\\gammaBiasPlot_All_n_500_seed_",seedNum,"_a_",alpha,"_b_",beta,"_trials_",trialsAll[1],"_trialsB_",trialsB,".pdf",sep=""), 
+ggsave(biasPlot,filename=paste("plots_All\\gammaBiasPlot_All_n_500_seed_",seedNum,"_a_",alpha,"_b_",beta,"_trials_",trialsAll[1],"_trialsB_",trialsB,".pdf",sep=""), 
        width = 12, height = 9)
 
 biasPlot<- ggplot(plotData, aes(x,y1_1000)) +
@@ -821,7 +821,7 @@ biasPlot<- ggplot(plotData, aes(x,y1_1000)) +
   # scale_y_continuous(limits=c(-8.85,0.75), breaks = seq(0, -7.5, by = -2.5))+
   ##ggtitle(TeX(paste("Parameters: $a=",alpha, "$, $b=", beta, "$",sep="")))
 biasPlot
-ggsave(biasPlot,filename=paste("plots_All\\JAS\\gammaBiasPlot_All_n_1000_seed_",seedNum,"_a_",alpha,"_b_",beta,"_trials_",trialsAll[1],"_trialsB_",trialsB,".pdf",sep=""), 
+ggsave(biasPlot,filename=paste("plots_All\\gammaBiasPlot_All_n_1000_seed_",seedNum,"_a_",alpha,"_b_",beta,"_trials_",trialsAll[1],"_trialsB_",trialsB,".pdf",sep=""), 
        width = 12, height = 9)
 
 biasPlot<- ggplot(plotData, aes(x,y1_5000)) +
@@ -853,6 +853,6 @@ biasPlot<- ggplot(plotData, aes(x,y1_5000)) +
 # scale_y_continuous(limits=c(-8.85,0.75), breaks = seq(0, -7.5, by = -2.5))+
 #ggtitle(TeX(paste("Parameters: $a=",alpha, "$, $b=", beta, "$",sep="")))
 biasPlot
-ggsave(biasPlot,filename=paste("plots_All\\JAS\\gammaBiasPlot_All_n_5000_seed_",seedNum,"_a_",alpha,"_b_",beta,"_trials_",trialsAll[1],"_trialsB_",trialsB,".pdf",sep=""), 
+ggsave(biasPlot,filename=paste("plots_All\\gammaBiasPlot_All_n_5000_seed_",seedNum,"_a_",alpha,"_b_",beta,"_trials_",trialsAll[1],"_trialsB_",trialsB,".pdf",sep=""), 
        width = 12, height = 9)
 
